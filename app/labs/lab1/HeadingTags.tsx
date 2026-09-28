@@ -23,6 +23,15 @@ export default function HeadingTags() {
         <h6>H6</h6>
       </div>
 
+      <div id="wd-ai-headings">
+        <h4>Lab notes</h4>
+        These notes summarize the work done in this lab.
+        <h5>What I built</h5>
+        A page that shows how each heading tag renders in the browser.
+        <h6>Next step</h6>
+        Move on to the next section of the lab.
+      </div>
+
       <div id="wd-your-heading">
         <h4>Jefferson David Kingston</h4>
         Hello! My name is Jefferson David Kingston and I'm <span id="wd-your-span">excited</span> to learn about HTML heading tags.

@@ -23,6 +23,11 @@ export default function Labs() {
             Lab 4: React Basics
           </Link>
         </li>
+        <li>
+          <Link href="/labs/lab5" id="wd-lab5-link">
+            Lab 5
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -21,6 +21,13 @@ export default function Images() {
       />
       <br />
       <img
+        id="wd-ai-image"
+        width="200px"
+        alt="Apollo 11 astronaut on the Moon"
+        src="https://images-assets.nasa.gov/image/as11-40-5903/as11-40-5903~medium.jpg"
+      />
+      <br />
+      <img
         id="wd-your-image"
         src="/images/boston-fall.jpg"
         height="300px"

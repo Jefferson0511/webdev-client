@@ -47,6 +47,13 @@ export default function HighlightedParagraphLab() {
         borderRadius="0px"
       />
       <HighlightedParagraph
+        text="Props let the same component render with different colors."
+        backgroundColor="lavender"
+        borderColor="purple"
+        borderWidth={3}
+        borderRadius={12}
+      />
+      <HighlightedParagraph
         text="I love to play football, listen to music and play video games."
         backgroundColor="#ffb175"
         borderColor="maroon"

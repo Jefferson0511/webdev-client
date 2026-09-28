@@ -23,6 +23,16 @@ export default function ListTags() {
         <li>Red Mars</li>
         <li>The Forever War</li>
       </ul>
+      <h5>HTML Tags</h5>
+      Some HTML tags covered in this chapter
+      <ul id="wd-ai-html-tags">
+        <li>h1: the largest heading</li>
+        <li>p: a paragraph of text</li>
+        <li>ol: a numbered list</li>
+        <li>ul: a bulleted list</li>
+        <li>table: rows and columns of data</li>
+        <li>span: inline text that stays on the same line</li>
+      </ul>
       <h5>My favourite recipe</h5>
       My favourite recipe is chicken alfredo.
       <ol id="wd-your-favorite-recipe">

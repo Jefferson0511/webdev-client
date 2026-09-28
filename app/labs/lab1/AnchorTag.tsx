@@ -12,6 +12,13 @@ export default function AnchorTag() {
         GitHub
       </a>
       <br />
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"
+        id="wd-ai-link"
+      >
+        MDN: table element
+      </a>
+      <br />
       <a href="https://www.youtube.com" id="wd-your-link">
         youtube.com
       </a>

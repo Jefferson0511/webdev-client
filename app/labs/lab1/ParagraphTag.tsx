@@ -22,6 +22,11 @@ export default function ParagraphTag() {
         This is the third paragraph. Wrap each paragraph with the paragraph tag
         to tell browsers to render the gaps.
       </p>
+      <p id="wd-ai-p">
+        The paragraph tag is a block-level element, so each one starts on a new
+        line. Browsers also give it a default top and bottom margin, which is
+        what creates the vertical space between paragraphs.
+      </p>
 
       <p id="wd-p-your-1">
         I am from Chennai, India. Its a very hot and humid city with the world's second largest beach.
