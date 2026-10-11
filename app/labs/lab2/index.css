@@ -358,3 +358,19 @@ p#wd-ai-id-selector {
   left: 0;
   bottom: 0;
 }
+
+.wd-zindex-bring-to-front {
+  z-index: 10;
+}
+.wd-zindex-middle {
+  z-index: 5;
+  position: absolute;
+  top: 30px;
+  left: 90px;
+}
+.wd-ai-zindex-top {
+  z-index: 20;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+}

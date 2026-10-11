@@ -9,6 +9,7 @@ import Corners from "./Corners";
 import Dimensions from "./Dimensions";
 import Display from "./Display";
 import Positions from "./Positions";
+import Zindex from "./Zindex";
 
 export default function Lab2() {
   return (
@@ -125,6 +126,7 @@ export default function Lab2() {
       <Dimensions />
       <Display />
       <Positions />
+      <Zindex />
     </div>
   );
 }
