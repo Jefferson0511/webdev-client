@@ -341,3 +341,20 @@ p#wd-ai-id-selector {
   right: 10px;
   bottom: 10px;
 }
+
+.wd-pos-fixed {
+  position: fixed;
+  right: 0px;
+  bottom: 50%;
+}
+.wd-pos-fixed-top-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+.wd-ai-pos-fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
