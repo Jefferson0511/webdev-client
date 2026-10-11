@@ -73,7 +73,8 @@ p#wd-ai-id-selector {
   color: darkred;
 }
 
-#wd-css-cascade p {
+/* Sample conflict: tag (green), class (yellow), id (red). The id rule should win. */
+:where(#wd-css-cascade) p {
   background-color: green;
 }
 .wd-ai-cascade {
@@ -81,6 +82,17 @@ p#wd-ai-id-selector {
 }
 #wd-ai-cascade {
   background-color: red;
+}
+
+/* My test: all three rules set the text color. The id rule should win. */
+:where(#wd-css-my-cascade) p {
+  color: green;
+}
+#wd-my-cascade {
+  color: red;
+}
+.wd-my-cascade {
+  color: blue;
 }
 
 .wd-bg-color-yellow { background-color: #ffff07; }

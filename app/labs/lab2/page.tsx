@@ -64,47 +64,53 @@ export default function Lab2() {
         <h4 className="wd-ai-class-selector">
           This is a sample heading using the same AI-added class selector.
         </h4>
-        <div id="wd-css-document-structure">
-          <div className="wd-selector-1">
-            <h3>Document structure selectors</h3>
-            <div className="wd-selector-2">
-              Selectors can be combined to refer elements in particular places
-              in the document
-              <p className="wd-selector-3">
-                This paragraph&apos;s red background is referenced as
-                <br />
-                .wd-selector-1 .wd-selector-3
-                <br />
-                meaning the descendant of some ancestor.
-                <br />
-                <span className="wd-selector-4">
-                  Whereas this span is a direct child of its parent{" "}
-                  <span className="wd-selector-5">
-                    and this is nested one level deeper
-                  </span>
+      </div>
+      <div id="wd-css-document-structure">
+        <div className="wd-selector-1">
+          <h3>Document structure selectors</h3>
+          <div className="wd-selector-2">
+            Selectors can be combined to refer elements in particular places
+            in the document
+            <p className="wd-selector-3">
+              This paragraph&apos;s red background is referenced as
+              <br />
+              .wd-selector-1 .wd-selector-3
+              <br />
+              meaning the descendant of some ancestor.
+              <br />
+              <span className="wd-selector-4">
+                Whereas this span is a direct child of its parent{" "}
+                <span className="wd-selector-5">
+                  and this is nested one level deeper
                 </span>
-                <br />
-                <span className="wd-ai-selector-5">
-                  This is sample AI added span with a nested element
-                </span>
-                <br />
-                You can combine these relationships to create specific styles
-                depending on the document structure
-              </p>
-              <div id="wd-css-cascade">
-                <h3>Cascade and specificity</h3>
-                <p className="wd-ai-cascade" id="wd-ai-cascade">
-                  This paragraph has a tag rule, a class rule, and an id rule
-                  all targeting background-color — the id rule should win.
-                </p>
-              </div>
-              <ForegroundColors />
-              <BackgroundColors />
-              <Borders />
-            </div>
+              </span>
+              <br />
+              <span className="wd-ai-selector-5">
+                This is sample AI added span with a nested element
+              </span>
+              <br />
+              You can combine these relationships to create specific styles
+              depending on the document structure
+            </p>
           </div>
         </div>
       </div>
+      <div id="wd-css-cascade">
+        <h3>Cascade and specificity</h3>
+        <p className="wd-ai-cascade" id="wd-ai-cascade">
+          This paragraph has a tag rule, a class rule, and an id rule all
+          targeting background-color — the id rule should win.
+        </p>
+      </div>
+      <div id="wd-css-my-cascade">
+        <p className="wd-my-cascade" id="wd-my-cascade">
+          Three rules set the color of this text. The id rule wins, so it shows
+          up red.
+        </p>
+      </div>
+      <ForegroundColors />
+      <BackgroundColors />
+      <Borders />
     </div>
   );
 }
