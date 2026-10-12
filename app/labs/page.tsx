@@ -28,6 +28,11 @@ export default function Labs() {
             Lab 5
           </Link>
         </li>
+        <li>
+          <Link href="/" id="wd-kambaz-link">
+            Kambaz
+          </Link>
+        </li>
       </ul>
     </div>
   );
