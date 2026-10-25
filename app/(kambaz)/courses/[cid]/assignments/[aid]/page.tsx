@@ -1,4 +1,5 @@
 import Link from "next/link";
+import * as db from "../../../../database";
 
 // Shared Tailwind classes for every text box and dropdown on the form
 const field = "w-full rounded border border-neutral-300 px-3 py-2";
@@ -7,25 +8,38 @@ const label = "font-medium md:pt-2 md:text-right";
 export default async function AssignmentEditor({
   params,
 }: {
-  params: Promise<{ cid: string }>;
+  params: Promise<{ cid: string; aid: string }>;
 }) {
-  const { cid } = await params;
+  const { cid, aid } = await params;
+  // Look up the assignment that was clicked, using the id from the URL
+  const assignment = db.assignments.find((a) => a._id === aid);
   return (
     <div id="wd-assignments-editor" className="max-w-3xl">
       <label htmlFor="wd-name" className="mb-1 block font-medium">
         Assignment Name
       </label>
-      <input id="wd-name" defaultValue="A1 HTML" className={`${field} mb-4`} />
+      <input
+        id="wd-name"
+        defaultValue={assignment?.title ?? ""}
+        className={`${field} mb-1`}
+      />
+      <p id="wd-ai-assignment-id" className="mb-4 text-sm text-neutral-500">
+        Assignment id: {aid}
+      </p>
       <textarea
         id="wd-description"
-        defaultValue="The assignment is available online Submit a link to the landing page of"
+        defaultValue={assignment?.description ?? ""}
         className={`${field} mb-6 h-40`}
       />
       <div className="grid grid-cols-1 items-start gap-x-4 gap-y-4 md:grid-cols-[180px_1fr]">
         <label htmlFor="wd-points" className={label}>
           Points
         </label>
-        <input id="wd-points" defaultValue={100} className={field} />
+        <input
+          id="wd-points"
+          defaultValue={assignment?.points ?? 100}
+          className={field}
+        />
 
         <label htmlFor="wd-group" className={label}>
           Assignment Group
@@ -83,13 +97,23 @@ export default async function AssignmentEditor({
           <label htmlFor="wd-due-date" className="mb-1 block font-medium">
             Due
           </label>
-          <input type="date" id="wd-due-date" className={`${field} mb-4`} />
+          <input
+            type="date"
+            id="wd-due-date"
+            defaultValue={assignment?.due}
+            className={`${field} mb-4`}
+          />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="wd-available-from" className="mb-1 block font-medium">
                 Available from
               </label>
-              <input type="date" id="wd-available-from" className={field} />
+              <input
+                type="date"
+                id="wd-available-from"
+                defaultValue={assignment?.available}
+                className={field}
+              />
             </div>
             <div>
               <label htmlFor="wd-available-until" className="mb-1 block font-medium">
