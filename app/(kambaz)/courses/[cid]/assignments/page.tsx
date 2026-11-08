@@ -1,16 +1,26 @@
+"use client";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import AssignmentItem from "./AssignmentItem";
-import * as db from "../../../database";
+import DeleteAssignmentDialog from "./DeleteAssignmentDialog";
+import { useAssignmentsStore, type Assignment } from "../../../store/assignmentsStore";
+import { useAccountContext } from "../../../account/AccountContext";
 
-export default async function Assignments({
-  params,
-}: {
-  params: Promise<{ cid: string }>;
-}) {
-  const { cid } = await params;
-  const assignments = db.assignments.filter(
-    (assignment) => assignment.course === cid,
+export default function Assignments() {
+  const { cid } = useParams();
+  const courseId = String(cid);
+  const router = useRouter();
+  const allAssignments = useAssignmentsStore((state) => state.assignments);
+  const deleteAssignment = useAssignmentsStore((state) => state.deleteAssignment);
+  const assignments = allAssignments.filter(
+    (assignment) => assignment.course === courseId,
   );
+  const { currentUser } = useAccountContext();
+  // Students can only view; everyone else (and signed-out visitors) can edit
+  const canEdit = !currentUser || currentUser.role !== "STUDENT";
+  // The assignment waiting for a Yes/Cancel answer in the confirm dialog
+  const [toDelete, setToDelete] = useState<Assignment | null>(null);
   return (
     <div id="wd-assignments">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
@@ -22,22 +32,25 @@ export default async function Assignments({
             className="rounded border py-1.5 pr-3 pl-9 text-sm"
           />
         </div>
-        <div className="flex gap-2">
-          <button
-            id="wd-add-assignment-group"
-            type="button"
-            className="inline-flex items-center gap-1 rounded border px-3 py-1.5 text-sm"
-          >
-            <FaPlus /> Group
-          </button>
-          <button
-            id="wd-add-assignment"
-            type="button"
-            className="inline-flex items-center gap-1 rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white"
-          >
-            <FaPlus /> Assignment
-          </button>
-        </div>
+        {canEdit && (
+          <div className="flex gap-2">
+            <button
+              id="wd-add-assignment-group"
+              type="button"
+              className="inline-flex items-center gap-1 rounded border px-3 py-1.5 text-sm"
+            >
+              <FaPlus /> Group
+            </button>
+            <button
+              id="wd-add-assignment"
+              type="button"
+              onClick={() => router.push(`/courses/${courseId}/assignments/new`)}
+              className="inline-flex items-center gap-1 rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white"
+            >
+              <FaPlus /> Assignment
+            </button>
+          </div>
+        )}
       </div>
       <h3
         id="wd-assignments-title"
@@ -52,13 +65,22 @@ export default async function Assignments({
         {assignments.map((assignment) => (
           <AssignmentItem
             key={assignment._id}
-            cid={cid}
+            cid={courseId}
             aid={assignment._id}
             title={assignment.title}
             details={`Multiple Modules | Not available until ${assignment.available} | Due ${assignment.due} | ${assignment.points} pts`}
+            onDelete={canEdit ? () => setToDelete(assignment) : undefined}
           />
         ))}
       </ul>
+      <DeleteAssignmentDialog
+        title={toDelete?.title ?? null}
+        onCancel={() => setToDelete(null)}
+        onConfirm={() => {
+          if (toDelete) deleteAssignment(toDelete._id);
+          setToDelete(null);
+        }}
+      />
     </div>
   );
 }
